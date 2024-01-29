@@ -27,22 +27,22 @@ BLYNK_CONNECTED() {
 BLYNK_WRITE(V0)
 {
   led_status[0] = param.asInt();
-  digitalWrite(led_pins[0], led_status[0]);
+  digitalWrite(led_pins[0], !led_status[0]);
 }
 BLYNK_WRITE(V1)
 {
   led_status[1] = param.asInt();
-  digitalWrite(led_pins[1], led_status[1]);
+  digitalWrite(led_pins[1], !led_status[1]);
 }
 BLYNK_WRITE(V2)
 {
   led_status[2] = param.asInt();
-  digitalWrite(led_pins[2], led_status[2]);
+  digitalWrite(led_pins[2], !led_status[2]);
 }
 BLYNK_WRITE(V3)
 {
   led_status[3] = param.asInt();
-  digitalWrite(led_pins[3], led_status[3]);
+  digitalWrite(led_pins[3], !led_status[3]);
 }
 
 
@@ -71,7 +71,7 @@ void loop()
       if ((sw_status[i] == LOW) &! sw_flag[i])
       {
         led_status[i] =! led_status[i];
-        digitalWrite(led_pins[i], led_status[i]);
+        digitalWrite(led_pins[i], !led_status[i]);
         Serial.println(sw_status[0]);
         switch (i)
         {
